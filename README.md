@@ -80,6 +80,7 @@
 1. Open [MIT App Inventor](https://appinventor.mit.edu/).
 2. Import the companion `.aia` file (if provided) or create a BLE UART receiver app.
 3. Connect to "Nicla Vision AI" via BLE.
+4. The flow diagram of MIT app inventor is given on `images/appflow`
 
 ## 📊 Results Summary
 
