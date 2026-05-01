@@ -1,0 +1,38 @@
+# Python
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# OS
+.DS_Store
+Thumbs.db
+~$*
+
+# IDE
+.vscode/
+.idea/
+
+# Archives (dataset is committed directly)
+*.zip
+
+# Temporary
+*.tmp
+ppt_images/
+build_ppt.py
+create_presentation.py
+
+# Lab folders (not part of the project deliverable)
+Lab*/
+Software/
+
+# Experimental runs (final model is in deployment/)
+first run/
+second run/
+third run/
+fourth run/
+fifth run/
+sixth run/
+seventh run/
+eight run/
+nine run/
+10th run/
