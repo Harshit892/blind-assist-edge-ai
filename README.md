@@ -28,7 +28,7 @@
 │   ├── stairs/
 │   └── table&chair/
 ├── training/
-│   └── best1.ipynb             # Complete training notebook (Colab)
+│   └── EdgeAIproject.ipynb             # Complete training notebook (Colab)
 ├── deployment/
 │   ├── main.py                 # OpenMV deployment script for Nicla Vision
 │   ├── blind_assist_int8.tflite # Final INT8 quantized model
