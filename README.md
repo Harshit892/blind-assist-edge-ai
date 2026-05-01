@@ -54,7 +54,7 @@
 
 ### Step 1: Train the Model (Google Colab)
 
-1. Open `training/best1.ipynb` in [Google Colab](https://colab.research.google.com/).
+1. Open `training/EdgeAIproject.ipynb` in [Google Colab](https://colab.research.google.com/).
 2. Upload the `dataset/` folder to your Google Drive.
 3. Update the `DATASET_PATH` variable in the notebook to point to your dataset.
 4. Run all cells. The notebook will:
