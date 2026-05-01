@@ -1,7 +1,7 @@
-# AI-Powered Blind Assistance Device — Project Report
+# WNAVI: Wearable Navigation Aid for Visually Impaired — Project Report
 
 **Course:** CP330 — Edge AI  
-**Team Members:** [Member 1], [Member 2], [Member 3], [Member 4]  
+**Team Members:** Harshit Garhewal (25937), Anshul Verma (25881), Sourin Das (26033), Tushar Dewangan (26361)  
 **Deployment Target:** Arduino Nicla Vision  
 **Date:** May 2026
 
