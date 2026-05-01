@@ -84,14 +84,17 @@ Images were captured directly on the Nicla Vision using a custom MicroPython scr
 
 The raw dataset contains 12 classes with ~4,625 total images:
 
-| Class | Samples | Class | Samples |
-|-------|---------|-------|---------|
-| bag | 285 | human | 320 |
-| book | 279 | lift | 180 |
-| bottle | 323 | obstacle | 264 |
-| clear_path | 278 | shoes | 266 |
-| doorwindow | 250 | stairs | 230 |
-| dustbin | 230 | table&chair | 260 |
+| Class |
+| book |
+| lift |
+| bottle |
+| obstacle |
+| clear_path |
+| shoes |
+| doorwindow |
+| stairs |
+| dustbin |
+|table&chair |
 
 ### 4.3 Merged Classes (5)
 
@@ -105,7 +108,7 @@ To reduce inter-class confusion and improve deployment accuracy, we merged seman
 | **obstacle** | obstacle, table&chair, dustbin, bag, book, bottle, shoes | DANGER |
 | **stairs** | stairs, lift | DANGER |
 
-### 4.4 Data Augmentation (Lab 03)
+### 4.4 Data Augmentation
 
 ```python
 ImageDataGenerator(
@@ -141,32 +144,32 @@ These augmentations simulate real-world helmet camera variations: head tilts (ro
 ## 5. Model Development Pipeline
 
 ```
-Step 1: Data Collection & Augmentation                 (Lab 03)
+Step 1: Data Collection & Augmentation                 
     ↓
-Step 2: Baseline — Decision Tree                       (Lab 04)
+Step 2: Baseline — Decision Tree                       
     ↓
-Step 3: Custom CNN — From Scratch                      (Lab 05)
+Step 3: Custom CNN — From Scratch                     
     ↓
-Step 4: Teacher — MobileNetV2 Transfer Learning        (Lab 05)
+Step 4: Teacher — MobileNetV2 Transfer Learning        
     ↓
-Step 5: Model Efficiency Metrics Analysis              (Lab 06)
+Step 5: Model Efficiency Metrics Analysis              
     ↓
-Step 6: Knowledge Distillation (Teacher → Student)     (Lab 10)
+Step 6: Knowledge Distillation (Teacher → Student)     
     ↓
-Step 7: Iterative Magnitude-Based Pruning              (Lab 09)
+Step 7: Iterative Magnitude-Based Pruning              
     ↓
-Step 8: Quantization Aware Training (QAT)              (Lab 08)
+Step 8: Quantization Aware Training (QAT)              
     ↓
-Step 9: INT8 TFLite Conversion & Calibration           (Lab 07)
+Step 9: INT8 TFLite Conversion & Calibration           
     ↓
-Step 10: Deploy to Arduino Nicla Vision                (Lab 02)
+Step 10: Deploy to Arduino Nicla Vision                
 ```
 
 ---
 
 ## 6. Model Training & Results
 
-### 6.1 Decision Tree Baseline (Lab 04)
+### 6.1 Decision Tree Baseline
 
 **Approach:** Flatten 96×96×3 images into 27,648-dimensional feature vectors and train a Decision Tree classifier.
 
@@ -181,7 +184,7 @@ dt_model.fit(X_train_flat, y_train)
 
 <!-- INSERT: Decision Tree confusion matrix -->
 
-### 6.2 Custom CNN (Lab 05)
+### 6.2 Custom CNN
 
 **Architecture:**
 ```
@@ -210,7 +213,7 @@ Dense(64, ReLU) → Dropout(0.3) → Dense(5, softmax)
 <!-- INSERT: Custom CNN training curves (loss + accuracy) -->
 <!-- INSERT: Custom CNN confusion matrix -->
 
-### 6.3 Teacher Model — MobileNetV2 (Lab 05)
+### 6.3 Teacher Model — MobileNetV2
 
 **Transfer Learning Strategy:**
 1. **Stage 1 (Feature Extraction):** Freeze entire MobileNetV2 base, train only the classification head for 15 epochs.
@@ -234,7 +237,7 @@ Dense(128, ReLU) → Dropout(0.3) → Dense(5, softmax)
 
 ## 7. Model Compression Techniques
 
-### 7.1 Knowledge Distillation (Lab 10)
+### 7.1 Knowledge Distillation
 
 **Concept:** Transfer "dark knowledge" from the large Teacher model to a tiny Student model. The Teacher's soft probability outputs reveal inter-class relationships (e.g., "human" is more similar to "obstacle" than to "clear_path") that hard one-hot labels cannot convey.
 
@@ -277,7 +280,7 @@ for epoch in range(epochs):
 
 <!-- INSERT: KD vs Vanilla Student comparison chart -->
 
-### 7.2 Magnitude-Based Pruning (Lab 09)
+### 7.2 Magnitude-Based Pruning
 
 **Concept:** Remove weights closest to zero — they contribute least to the model's output. Gradually increase sparsity during fine-tuning to allow the model to adapt.
 
@@ -320,7 +323,7 @@ quant_aware_model.fit(X_train, y_train, epochs=15, ...)
 
 **Result:** QAT recovers ~1% accuracy compared to naive post-training quantization.
 
-### 7.4 INT8 TFLite Conversion (Lab 07)
+### 7.4 INT8 TFLite Conversion 
 
 ```python
 converter = tf.lite.TFLiteConverter.from_keras_model(qat_model)
@@ -382,12 +385,12 @@ while True:
 
 ### 9.2 Feedback System
 
-| Detection | LED | Buzzer | Action |
-|-----------|-----|--------|--------|
-| Clear Path | 🟢 Green | 2 short beeps | Safe to walk |
-| Human / Obstacle / Stairs | 🔴 Red | 3 rapid beeps | DANGER — Stop! |
-| Door | 🔵 Blue | 1 beep | Object nearby |
-| Low confidence (<75%) | ⚫ Off | None | Ignore |
+| Detection | LED | Action |
+|-----------|-----|--------|
+| Clear Path | 🟢 Green | Safe to walk |
+| Human / Obstacle / Stairs | 🔴 Red | DANGER — Stop! |
+| Door | 🔵 Blue | Object nearby |
+| Low confidence (<75%) | ⚫ Off | Ignore |
 
 ### 9.3 BLE Communication
 
@@ -441,59 +444,6 @@ A BLE UART service (`6E400001-B5A3-F393-E0A9-E50E24DCCA9E`) sends detection resu
 
 ---
 
-## 11. Individual Contributions
-
-### Member 1 — Data Collection & Preprocessing (~28 hrs)
-
-| Task | Hours |
-|------|-------|
-| Capturing images across multiple environments using Nicla Vision camera | 10 |
-| Organizing, cleaning, and labeling the dataset (~4,625 images) | 4 |
-| Researching and implementing 12→5 class merging strategy | 3 |
-| Implementing data augmentation pipeline (Lab 03) | 4 |
-| Re-capturing images in diverse backgrounds to fix shortcut learning | 5 |
-| Train/validation/test split and data pipeline debugging | 2 |
-
-### Member 2 — Model Training & Optimization (~30 hrs)
-
-| Task | Hours |
-|------|-------|
-| Decision Tree baseline (Lab 04) | 3 |
-| Custom CNN design and training — multiple iterations (Lab 05) | 5 |
-| MobileNetV2 Teacher transfer learning (Lab 05) | 4 |
-| Knowledge Distillation with custom training loop (Lab 10) | 6 |
-| Iterative magnitude-based pruning — 3 rounds (Lab 09) | 4 |
-| Quantization Aware Training (Lab 08) | 4 |
-| Model efficiency metrics analysis (Lab 06) | 2 |
-| Hyperparameter tuning across 7+ experimental runs | 2 |
-
-### Member 3 — Deployment & Embedded Systems (~28 hrs)
-
-| Task | Hours |
-|------|-------|
-| INT8 TFLite conversion with calibration (Lab 07) | 3 |
-| OpenMV deployment script — camera, model, inference loop (Lab 02) | 5 |
-| Debugging tensor allocation error — RAM analysis, init reordering | 4 |
-| Fixing preprocessing mismatch (squashing vs cropping) | 3 |
-| BLE UART service implementation | 4 |
-| MIT App Inventor companion app | 3 |
-| LED + buzzer feedback system with alert patterns | 3 |
-| Camera lag fix (non-blocking timer), prediction smoothing | 3 |
-
-### Member 4 — Testing, Documentation & Presentation (~27 hrs)
-
-| Task | Hours |
-|------|-------|
-| Real-world field testing across 7+ experimental runs | 6 |
-| Generating confusion matrices, training curves, comparison charts | 4 |
-| Analyzing deployment failures and shortcut learning | 3 |
-| Writing project report and documentation | 6 |
-| Creating PowerPoint presentation with diagrams | 4 |
-| Step-by-step deployment guide for reproducibility | 2 |
-| Literature survey on Edge AI for assistive technology | 2 |
-
----
-
 ## 12. Future Work
 
 - **Expanded Dataset:** 10,000+ images across more diverse environments.
@@ -504,19 +454,5 @@ A BLE UART service (`6E400001-B5A3-F393-E0A9-E50E24DCCA9E`) sends detection resu
 - **GPS Integration:** Outdoor navigation assistance.
 
 ---
-
-## 13. References
-
-| Lab | Topic |
-|-----|-------|
-| Lab 02 | TinyML — Model Development & Deployment Pipeline |
-| Lab 03 | Embedded CV — Image Preprocessing & Augmentation |
-| Lab 04 | Decision Tree Classification |
-| Lab 05 | ANN/CNN, Image Classification, Transfer Learning |
-| Lab 06 | Model Parameters & Efficiency Metrics |
-| Lab 07 | Post-Training Quantization (INT8 Conversion) |
-| Lab 08 | Quantization Aware Training (QAT) |
-| Lab 09 | Magnitude-Based Pruning (PolynomialDecay) |
-| Lab 10 | Knowledge Distillation (Teacher-Student) |
 
 **Tools:** TensorFlow, TFLite, TF Model Optimization Toolkit, OpenMV IDE, MicroPython, Arduino Nicla Vision, Google Colab, MIT App Inventor.
