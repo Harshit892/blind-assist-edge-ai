@@ -84,15 +84,15 @@
 
 ## 📊 Results Summary
 
-| Model Stage | Technique | Lab | Accuracy | Size |
-|-------------|-----------|-----|----------|------|
-| Decision Tree | Baseline | Lab 04 | ~86% | N/A |
-| Custom CNN | From scratch | Lab 05 | ~98% | 140 KB |
-| MobileNetV2 (Teacher) | Transfer Learning | Lab 05 | ~99.5% | 8.8 MB |
-| KD Student | Knowledge Distillation | Lab 10 | ~95% | 80 KB |
-| Pruned Student | Magnitude Pruning | Lab 09 | ~93% | 60 KB |
-| After QAT | Quantization Aware | Lab 08 | ~94% | 60 KB |
-| **Final INT8 TFLite** | **Full pipeline** | **Lab 07** | **~93%** | **120 KB** |
+| Model Stage | Technique | Accuracy | Size |
+|-------------|-----------|----------|------|
+| Decision Tree | Baseline | ~76.68% | N/A |
+| Custom CNN | From scratch | ~95.69% | 140 KB |
+| MobileNetV2 (Teacher) | Transfer Learning | ~99.20% | 8.8 MB |
+| KD Student | Knowledge Distillation | ~93.77% | 80 KB |
+| Pruned Student | Magnitude Pruning | ~93.77% | 60 KB |
+| After QAT | Quantization Aware | ~91.37% | 60 KB |
+| **Final INT8 TFLite** | **Full pipeline** | **~91.21%** | **118 KB** |
 
 ## 📄 Full Report
 
