@@ -466,9 +466,13 @@ A BLE UART service (`6E400001-B5A3-F393-E0A9-E50E24DCCA9E`) sends detection resu
 
 ## 13. References
 [1] C.-D. Sahoo, "Image-Classification-Under-256KB," GitHub, 2023. [Online]. Available: https://github.com/Chinmay-Deep-Sahoo/Image-Classification-Under-256KB. [Accessed: May 1, 2026].
+
 [2] [Uploader Name], "[Video Title]," YouTube, [Year]. [Online]. Available: https://youtu.be/zeybEOM2BHY?si=vKVm2QDbGAw6GP3D. [Accessed: May 1, 2026].
+
 [3] [Author Name], "[Document/File Title]," Google Share, [Year]. [Online]. Available: https://share.google/FC6kqlOlAXq5ktKyz. [Accessed: May 1, 2026].
+
 [4] BrianMacG, "Arduino Deployment with Nicla Vision - Initial Success Followed by 'Failed to run classifier'," Edge Impulse Forum, Apr. 19, 2025. [Online]. Available: https://forum.edgeimpulse.com/t/arduino-deployment-with-nicla-vision-initial-success-followed-by-failed-to-run-classifier/13868. [Accessed: May 1, 2026].
+
 [5] milnepe, "Image Recognition with Arduino Nicla Vision: A Radxa ROCK SBC Classifier," DesignSpark, Jun. 10, 2024. [Online]. Available: https://www.rs-online.com/designspark/image-recognition-with-arduino-nicla-vision-a-radxa-rock-sbc-classifier.
 
 **Tools:** TensorFlow, TFLite, TF Model Optimization Toolkit, OpenMV IDE, MicroPython, Arduino Nicla Vision, Google Colab, MIT App Inventor.
