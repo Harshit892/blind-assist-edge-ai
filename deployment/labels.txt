@@ -1,6 +1,0 @@
-clear_path
-door
-human
-object
-obstacle
-stairs
