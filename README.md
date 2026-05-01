@@ -1,5 +1,4 @@
-# WNAVI- Wearable Navigation Aid Utilizing Lightweight CNN for Visually Impaired<img width="1141" height="81" alt="image" src="https://github.com/user-attachments/assets/df30d992-a93b-4fbb-80cd-660048813d41" />
-
+# WNAVI- Wearable Navigation Aid Utilizing Lightweight CNN for Visually Impaired
 
 > **Edge AI Course Project (CP330)** — Real-time object classification for visually impaired navigation using Arduino Nicla Vision.
 
