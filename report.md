@@ -1,9 +1,9 @@
 # WNAVI: Wearable Navigation Aid for Visually Impaired — Project Report
 
-**Course:** CP330 — Edge AI  
+**Course:** CP330 — Edge AI  by Prof. Pandarasamy Arjunan, IISc Bangalore
 **Team Members:** Harshit Garhewal (25937), Anshul Verma (25881), Sourin Das (26033), Tushar Dewangan (26361)  
 **Deployment Target:** Arduino Nicla Vision  
-**Date:** May 2026
+**Date:** 1, May 2026
 
 ---
 
